@@ -2,7 +2,12 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				bkg: 'rgb(var(--color-bkg) / <alpha-value>)',
+				fg: 'rgb(var(--color-fg) / <alpha-value>)'
+			}
+		}
 	},
 	plugins: []
 };

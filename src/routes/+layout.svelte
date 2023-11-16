@@ -1,5 +1,11 @@
 <script>
-	import '../app.css';
+	import '../styles/global.css';
+	import Navbar from '$lib/components/layout/navbar.svelte';
+	import Footer from '$lib/components/layout/footer.svelte';
 </script>
 
-<slot />
+<Navbar />
+<main class="p-4">
+	<slot />
+</main>
+<Footer />

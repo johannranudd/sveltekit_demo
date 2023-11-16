@@ -9,7 +9,7 @@
 		}
 	}
 	let title = '';
-	let titleIsLocked = false;
+	let newTitle = '';
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -18,8 +18,7 @@
 	<button class="primary-btn" on:click={increment}>increment</button>
 	<button class="primary-btn" on:click={decrement}>decrement</button>
 </div>
-<p>Title: {title}</p>
-<input class="border" type="text" bind:value={title} disabled={titleIsLocked} />
-<button class="primary-btn" on:click={() => (titleIsLocked = true)}>Lock title</button>
-<button class="primary-btn" on:click={() => (titleIsLocked = false)}>unock title</button>
-<p>{titleIsLocked}</p>
+<p>Title: {newTitle}</p>
+<input class="border" type="text" bind:value={title} />
+<button class="primary-btn" on:click={() => (newTitle = title)}>Update title</button>
+<button class="primary-btn" on:click={() => ((title = ''), (newTitle = ''))}>Reset title</button>

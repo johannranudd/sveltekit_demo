@@ -17,8 +17,8 @@
 	<h3>Logo</h3>
 	<button on:click={changeColorMode}>color mode</button>
 	<ul class="flex gap-4">
-		<li><a href="./">Home</a></li>
-		<li><a href="./about">About</a></li>
-		<li><a href="./courses">Courses</a></li>
+		<li><a href="/">Home</a></li>
+		<li><a href="/about">About</a></li>
+		<li><a href="/courses">Courses</a></li>
 	</ul>
 </nav>

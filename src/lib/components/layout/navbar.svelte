@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-
+	import { navigationModel } from '$lib/components/layout/navigation.model';
 	let colorMode = 'light';
 	function changeColorMode() {
 		colorMode = colorMode === 'light' ? 'dark' : 'light';
@@ -17,8 +17,8 @@
 	<h3>Logo</h3>
 	<button on:click={changeColorMode}>color mode</button>
 	<ul class="flex gap-4">
-		<li><a href="/">Home</a></li>
-		<li><a href="/about">About</a></li>
-		<li><a href="/courses">Courses</a></li>
+		{#each navigationModel as path}
+			<li><a href={path.link}>{path.name}</a></li>
+		{/each}
 	</ul>
 </nav>

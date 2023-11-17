@@ -14,7 +14,7 @@
 </script>
 
 <nav class="flex justify-between border-b p-4">
-	<h3>Logo</h3>
+	<h3><a href="/">Logo</a></h3>
 	<button on:click={changeColorMode}>color mode</button>
 	<ul class="flex gap-4">
 		{#each navigationModel as path}

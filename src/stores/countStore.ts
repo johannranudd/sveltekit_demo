@@ -1,25 +1,20 @@
+import { getItem, setItem } from '@/storage/localstorage';
 import { writable } from 'svelte/store';
 
-export function createCountStore(initialValue: number) {
-	const count = writable(initialValue);
-	function increment() {
-		count.update((c) => c + 1);
-	}
-	function decrement() {
-		count.update((c) => c - 1);
-	}
-	function reset() {
-		count.set(0);
-	}
-	function square() {
-		count.update((c) => c * c);
-	}
+const count = writable(getItem('count') || 0);
 
-	return {
-		...count,
-		increment,
-		decrement,
-		reset,
-		square
-	};
+count.subscribe((currentValue) => {
+	if (typeof window !== 'undefined') {
+		setItem('count', currentValue);
+	}
+});
+
+export function inc() {
+	count.update((c) => c + 1);
 }
+
+export function dec() {
+	count.update((c) => c - 1);
+}
+
+export default count;

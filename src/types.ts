@@ -4,5 +4,6 @@ export type Greetings = {
 
 export interface ILanguage {
 	code: string;
+	language: string;
 	locale: string;
 }

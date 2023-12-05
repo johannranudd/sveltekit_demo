@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { languages } from '$lib/translation/languages';
-	import language, { setLanguage } from '@/stores/languageStore';
+	import { languages, setLanguage } from '@/stores/languageStore';
 </script>
 
 <ul class="flex gap-4">

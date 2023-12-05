@@ -1,13 +1,9 @@
 <script lang="ts">
-	import { getLanguage } from '@/lib/translation/languages';
-
-	// import { languages } from '$lib/translation/languages';
-	import language from '@/stores/languageStore';
-	// console.log(languages);
-	//! !!!!!!!todo: get the right file here!!!!!!!!!!!!!!!!!!!!!!!!
-	const lang = getLanguage('es');
-	console.log(lang);
+	import { language, translation } from '@/stores/languageStore';
+	// console.log($t);
 </script>
 
 <h1>Welcome to SvelteKit</h1>
 <p>Language: {$language.language}</p>
+
+<p>{translation('greeting')}</p>

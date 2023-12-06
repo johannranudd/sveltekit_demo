@@ -21,37 +21,37 @@ const defaultLanguage: ILanguage = {
 	locale: './en.json'
 };
 
-export const language = writable<ILanguage>(initializeDefaultLanguage());
+// export const language = writable<ILanguage>(initializeDefaultLanguage());
 let currentFile = await import(`@/lib/translation/${defaultLanguage.code}.json`);
+export const language = writable<Promise<ILanguage>>(
+	initializeDefaultLanguage() || defaultLanguage
+);
 
 // getLanguageFile(initializeDefaultLanguage().code)
-function initializeDefaultLanguage() {
+async function initializeDefaultLanguage() {
 	if (typeof window !== 'undefined') {
 		const languageInStorage = getItem('language');
 		if (!languageInStorage) {
 			setItem('language', defaultLanguage);
-			getLanguageFile(defaultLanguage.code);
+
+			currentFile = await getLanguageFile(defaultLanguage.code);
 			return defaultLanguage;
 		} else {
-			// getLanguageFile(languageInStorage.code);
+			currentFile = await getLanguageFile(languageInStorage.code);
 			return languageInStorage;
 		}
 	} else {
-		// getLanguageFile(defaultLanguage.code);
+		currentFile = await getLanguageFile(defaultLanguage.code);
 		return defaultLanguage;
 	}
 }
 
 async function getLanguageFile(lang: string) {
 	const language = languages.find((item) => item.code === lang);
-	// console.log(language.locale);
 	if (language && typeof window !== 'undefined') {
 		try {
-			const module = await import(`@/lib/translation/${lang}.json`);
-			console.log(module);
-			currentFile = module;
-			return module;
-			// return `@/lib/translation/${lang}.json`;
+			currentFile = await import(`@/lib/translation/${lang}.json`);
+			return currentFile;
 		} catch (error) {
 			console.error('Failed to load language file:', error);
 			return `Error loading translations`;
@@ -62,24 +62,20 @@ async function getLanguageFile(lang: string) {
 	}
 }
 
-export const translation = async (str: string): Promise<string> => {
+export const translation = (str: string) => {
 	if (typeof window !== 'undefined') {
-		const languageInStorage = getItem('language');
+		// const languageInStorage = getItem('language');
 		console.log(currentFile);
-		const file = await getLanguageFile(languageInStorage.code);
-		console.log(file[str]);
-		return file[str];
+		console.log(currentFile[str]);
+		return currentFile[str];
 	} else {
 		return 'No translation';
 	}
 };
 
-export async function setLanguage(newLang: ILanguage) {
-	if (typeof window !== 'undefined') {
+export function setLanguage(newLang: ILanguage) {
+	if (typeof window !== 'undefined' && newLang) {
 		setItem('language', newLang);
 		language.set(newLang);
-		//  getLanguageFile(newLang.code);
-		// translation.set(await getLanguageFile(newLang.code));
-		// console.log(translation);
 	}
 }

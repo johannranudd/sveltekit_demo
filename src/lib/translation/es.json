@@ -1,1 +1,5 @@
-{ "greeting": "hola", "sentence": "Esta es una oración escrita sólo para probar la traducción." }
+{
+	"language": "Spanish",
+	"greeting": "hola",
+	"sentence": "Esta es una oración escrita sólo para probar la traducción."
+}

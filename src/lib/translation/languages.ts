@@ -17,3 +17,5 @@
 // 	}
 // }
 // !works above
+// import en from '$lib/translation/en.json';
+// import es from '$lib/translation/es.json';

@@ -1,1 +1,5 @@
-{ "greeting": "Hello", "sentence": "This is a sentence written only to test the translation" }
+{
+	"language": "English",
+	"greeting": "Hello",
+	"sentence": "This is a sentence written only to test the translation"
+}

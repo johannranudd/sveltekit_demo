@@ -47,9 +47,9 @@ async function initializeDefaultLanguage() {
 async function getLanguageFile(lang: string) {
 	const language = languages.find((item) => item.code === lang);
 	if (language && typeof window !== 'undefined') {
-		console.log(language);
-		console.log(language.code);
-		console.log(esJSONFile);
+		// console.log(language);
+		// console.log(language.code);
+		// console.log(esJSONFile);
 		try {
 			currentFile = await import(`@/lib/translation/${lang}.json`);
 			return currentFile;

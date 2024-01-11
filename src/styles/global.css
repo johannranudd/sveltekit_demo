@@ -7,12 +7,6 @@
 		--color-bkg: 255 255 255;
 		--color-fg: 0 0 0;
 	}
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--color-bkg: 0 0 0;
-			--color-fg: 255 255 255;
-		}
-	}
 	:root[data-theme='dark'] {
 		--color-bkg: 0 0 0;
 		--color-fg: 255 255 255;
